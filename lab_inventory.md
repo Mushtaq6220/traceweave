@@ -1,20 +1,18 @@
 # 📋 Lab Asset & Systems Inventory
 
-This document tracks all physical hosts, virtual machines, networking appliances, software packages, and log forwarding configurations in the **TraceWave SOC Lab**.
-
----
-
 ## 🖥️ Virtual Machine Inventory
 
-| Hostname | Role / Description | OS | IP Address | Subnet / VLAN | RAM / vCPU | Installed Agents | Log Sources |
-| :--- | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
-| `DC01.corp.local` | Domain Controller / Active Directory | Windows Server 2022 | `192.168.10.10` | VLAN 10 (Corp LAN) | 4 GB / 2 vCPU | Wazuh Agent, Sysmon | Security.evtx, System.evtx, Sysmon.evtx, DNS Server |
-| `WKSTN01.corp.local` | Finance Workstation / Target Endpoint | Windows 11 Enterprise | `192.168.10.50` | VLAN 10 (Corp LAN) | 8 GB / 4 vCPU | Wazuh Agent, Sysmon | Security.evtx, Sysmon.evtx, PowerShell Operational |
-| `SRV-WEB01` | Public Web & App Server | Ubuntu 22.04 LTS | `192.168.20.15` | VLAN 20 (DMZ) | 4 GB / 2 vCPU | Wazuh Agent, Auditd | `/var/log/auth.log`, `/var/log/nginx/`, Auditd |
-| `SIEM-WAZUH` | Centralized Wazuh SIEM & Indexer | Ubuntu 22.04 LTS | `192.168.30.100` | VLAN 30 (SecOps) | 8 GB / 4 vCPU | Wazuh Server, OpenSearch | Syslog (514), Agent Registration (1514/1515) |
-| `KALI-ATTACK` | Adversary Emulation Platform | Kali Linux 2024.x | `192.168.99.50` | VLAN 99 (Attacker) | 4 GB / 2 vCPU | Metasploit, Covenant, Impacket | Attack telemetry & staging logs |
+# Lab Inventory
 
----
+| Machine | Role | Hypervisor | Hostname | IP Address | OS Version | Network Mode |
+|---|---|---|---|---|---|---|
+| Windows | Victim / Sysmon host | Physical host | bugbountyhunter | 192.168.56.1 | Windows 11 | Home LAN |
+| Kali | Attacker | VMware | kali | 192.168.x.x | Kali 2025.3 | Bridged |
+| Ubuntu | Wazuh manager | VirtualBox | ubuntu | 192.168.x.x | Ubuntu 24.04 LTS | Bridged |
+
+**Git version (Kali): 2.53.0**
+**Python version (Kali):3.13.7**
+**PowerShell version (Windows):5.1.26100.9549**
 
 ## 🌐 Network Segmentation & Firewall Rules
 
