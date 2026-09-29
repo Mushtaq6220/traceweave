@@ -68,9 +68,14 @@ soc-analyst-lab/
 ## 🔬 Core Technologies & Stack
 
 | **SIEM & XDR** | Wazuh 4.x / Elastic Stack | Centralized Log Aggregation, Correlation, & Alerting |
+
 | **Endpoint Telemetry** | Sysmon (Modular Config) | Process Creation (EID 1), Network Connections (EID 3), Image Loads (EID 7) |
+
 | **Detection Format** | Sigma / Wazuh Rules | Portable rule specifications mapped to ATT&CK techniques |
+
 | **Adversary Emulation** | Atomic Red Team / Custom Scripts | Standardized technique execution & validation |
+
 | **Forensic Triage** | Velociraptor / KAPE / FTK Imager | Artifact extraction and timeline generation |
+
 | **Network Security** | Snort / Wireshark / Suricata | Network session analysis, DNS tunneling & C2 detection |
 
