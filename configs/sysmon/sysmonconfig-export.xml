@@ -1,0 +1,45 @@
+<Sysmon schemaversion="4.90">
+  <HashAlgorithms>md5,sha256,IMPHASH</HashAlgorithms>
+  <EventFiltering>
+    <!-- Event ID 1: Process Creation -->
+    <RuleGroup name="ProcessCreation" groupRelation="or">
+      <ProcessCreate onmatch="include">
+        <Image condition="image">powershell.exe</Image>
+        <Image condition="image">cmd.exe</Image>
+        <Image condition="image">mshta.exe</Image>
+        <Image condition="image">wscript.exe</Image>
+        <Image condition="image">cscript.exe</Image>
+        <Image condition="image">certutil.exe</Image>
+        <Image condition="image">rundll32.exe</Image>
+        <Image condition="image">regsvr32.exe</Image>
+        <Image condition="image">fodhelper.exe</Image>
+        <Image condition="image">wmic.exe</Image>
+      </ProcessCreate>
+    </RuleGroup>
+
+    <!-- Event ID 3: Network Connection -->
+    <RuleGroup name="NetworkConnection" groupRelation="or">
+      <NetworkConnect onmatch="include">
+        <Image condition="image">powershell.exe</Image>
+        <Image condition="image">cmd.exe</Image>
+        <Image condition="image">rundll32.exe</Image>
+        <Image condition="image">certutil.exe</Image>
+      </NetworkConnect>
+    </RuleGroup>
+
+    <!-- Event ID 10: Process Access (LSASS Protection) -->
+    <RuleGroup name="ProcessAccess" groupRelation="or">
+      <ProcessAccess onmatch="include">
+        <TargetImage condition="is">C:\Windows\System32\lsass.exe</TargetImage>
+      </ProcessAccess>
+    </RuleGroup>
+
+    <!-- Event ID 13: Registry Modification -->
+    <RuleGroup name="RegistryEvent" groupRelation="or">
+      <RegistryEvent onmatch="include">
+        <TargetObject condition="contains">CurrentVersion\Run</TargetObject>
+        <TargetObject condition="contains">ms-settings\Shell\Open\command</TargetObject>
+      </RegistryEvent>
+    </RuleGroup>
+  </EventFiltering>
+</Sysmon>

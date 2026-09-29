@@ -1,0 +1,22 @@
+title: UAC Bypass Via Fodhelper Registry Hijack
+id: a8b34c21-5491-49b8-a72a-1e9c40217dc3
+status: test
+description: Detects registry modifications to ms-settings and subsequent execution of fodhelper.exe to bypass UAC.
+references:
+    - https://attack.mitre.org/techniques/T1548/002/
+author: Mohammad Mushtaq (TraceWave SOC Lab)
+date: 2026/09/29
+tags:
+    - attack.privilege_escalation
+    - attack.defense_evasion
+    - attack.t1548.002
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection:
+        Image|endswith: '\fodhelper.exe'
+    condition: selection
+falsepositives:
+    - Administrative maintenance tasks (rare)
+level: high

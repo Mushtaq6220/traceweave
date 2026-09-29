@@ -1,0 +1,25 @@
+title: LSASS Memory Dump via Comsvcs DLL
+id: c4f23b12-98ab-41c3-bc76-0f9831ae7812
+status: test
+description: Detects execution of rundll32.exe loading comsvcs.dll to dump lsass.exe process memory.
+references:
+    - https://attack.mitre.org/techniques/T1003/001/
+author: Mohammad Mushtaq (TraceWave SOC Lab)
+date: 2026/09/29
+tags:
+    - attack.credential_access
+    - attack.t1003.001
+logsource:
+    category: process_creation
+    product: windows
+detection:
+    selection_rundll:
+        Image|endswith: '\rundll32.exe'
+    selection_cmd:
+        CommandLine|contains|all:
+            - 'comsvcs'
+            - 'MiniDump'
+    condition: selection_rundll and selection_cmd
+falsepositives:
+    - Highly unlikely in standard business environments
+level: critical

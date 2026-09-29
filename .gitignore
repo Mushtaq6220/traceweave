@@ -1,0 +1,33 @@
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Large binary artifacts & memory dumps
+*.raw
+*.dmp
+*.vmem
+*.vmdk
+*.ova
+*.iso
+*.pcap
+*.pcapng
+*.evtx
+
+# Sensitive credential / environment configs
+.env
+*.secret
+*.pem
+*.key
+*.pfx
+
+# OS generated files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.tmp
+*.swp
+
+# IDE files
+.vscode/
+.idea/

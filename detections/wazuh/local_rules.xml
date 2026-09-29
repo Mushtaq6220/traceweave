@@ -1,0 +1,34 @@
+<group name="custom_soc_detections,sysmon,">
+  <!-- Rule 100100: Suspicious LSASS Process Access -->
+  <rule id="100100" level="12">
+    <if_group>sysmon_event10</if_group>
+    <field name="win.eventdata.targetImage">C:\\Windows\\System32\\lsass.exe</field>
+    <field name="win.eventdata.grantedAccess">0x1FFFFF|0x1010|0x1438</field>
+    <description>TraceWave Alert: Suspicious full access to LSASS memory detected (Potential Credential Dumping)</description>
+    <mitre>
+      <id>T1003.001</id>
+    </mitre>
+  </rule>
+
+  <!-- Rule 100101: LOLBin Rundll32 Comsvcs Dump -->
+  <rule id="100101" level="14">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.image">rundll32.exe</field>
+    <field name="win.eventdata.commandLine">comsvcs.dll</field>
+    <field name="win.eventdata.commandLine">MiniDump</field>
+    <description>TraceWave Critical: LSASS MiniDump via rundll32 and comsvcs.dll detected</description>
+    <mitre>
+      <id>T1003.001</id>
+    </mitre>
+  </rule>
+
+  <!-- Rule 100102: Fodhelper UAC Bypass -->
+  <rule id="100102" level="11">
+    <if_group>sysmon_event1</if_group>
+    <field name="win.eventdata.image">fodhelper.exe</field>
+    <description>TraceWave Alert: Fodhelper executed - Potential UAC Bypass Attempt</description>
+    <mitre>
+      <id>T1548.002</id>
+    </mitre>
+  </rule>
+</group>
