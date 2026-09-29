@@ -6,7 +6,7 @@ Welcome to **TraceWave - SOC Analyst Lab**, an enterprise-grade threat detection
 
 ---
 
-## 📌 Repository Architecture & Directory Structure
+## Repository Architecture & Directory Structure
 
 ```text
 soc-analyst-lab/
@@ -57,43 +57,20 @@ soc-analyst-lab/
 
 ---
 
-## 🎯 Lab Objectives
+## Lab Objectives
 
 1. **Telemetry & Visibility Pipeline**: Instrument Windows Endpoints (Sysmon, Windows Event Forwarding) and Linux servers with Wazuh Agent to achieve deep endpoint visibility.
 2. **Adversary Simulation**: Replicate real-world Advanced Persistent Threat (APT) tactics mapped to the **MITRE ATT&CK** matrix.
 3. **Detection Engineering**: Author high-fidelity **Sigma** and **Wazuh** rules to detect living-off-the-land binaries (LOLBins), credential dumping, lateral movement, and command-and-control (C2) channels.
 4. **DFIR & Incident Handling**: Conduct root-cause analysis, reconstruct attack timelines, parse artifacts ($MFT, Shimcache, Prefetch, Registry), and produce executive-grade incident reports.
 
----
 
 ## 🔬 Core Technologies & Stack
 
-| Component | Technology | Role |
-| :--- | :--- | :--- |
 | **SIEM & XDR** | Wazuh 4.x / Elastic Stack | Centralized Log Aggregation, Correlation, & Alerting |
 | **Endpoint Telemetry** | Sysmon (Modular Config) | Process Creation (EID 1), Network Connections (EID 3), Image Loads (EID 7) |
 | **Detection Format** | Sigma / Wazuh Rules | Portable rule specifications mapped to ATT&CK techniques |
 | **Adversary Emulation** | Atomic Red Team / Custom Scripts | Standardized technique execution & validation |
 | **Forensic Triage** | Velociraptor / KAPE / FTK Imager | Artifact extraction and timeline generation |
-| **Network Security** | Zeek / Wireshark / Suricata | Network session analysis, DNS tunneling & C2 detection |
+| **Network Security** | Snort / Wireshark / Suricata | Network session analysis, DNS tunneling & C2 detection |
 
----
-
-## 📊 8-Day SOC Analyst Roadmap Summary
-
-- **Day 01**: Lab topology planning, subnet segmentation, and architecture mapping.
-- **Day 02**: Provisioning Domain Controller, Windows 11 Endpoint, Ubuntu Web Server, and Kali Linux.
-- **Day 03**: Fine-tuning Sysmon configurations and Windows Advanced Audit Policies.
-- **Day 04**: Deploying Wazuh Manager, Agent onboarding, and pipeline health verification.
-- **Day 05**: Executing multi-stage cyber attack scenario (Phishing -> LOLBins -> LSASS Dump -> Lateral Movement).
-- **Day 06**: Triage alerts, investigate false positives, write Sigma & Wazuh detection rules.
-- **Day 07**: Evidence extraction, memory artifact triage, timeline reconstruction.
-- **Day 08**: Drafting comprehensive Incident Report, Executive Briefing, and Remediation Roadmap.
-
----
-
-## 👤 Author
-
-- **Analyst**: Mohammad Mushtaq
-- **GitHub**: [@Mushtaq6220](https://github.com/Mushtaq6220)
-- **Repository**: [traceweave](https://github.com/Mushtaq6220/traceweave)
